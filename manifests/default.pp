@@ -1,7 +1,7 @@
 # http://www.puppetcookbook.com/
 $ar_databases = ['activerecord_unittest', 'activerecord_unittest2']
-$as_vagrant   = 'sudo -u vagrant -H bash -l -c'
-$home         = '/home/vagrant'
+$as_vm   = 'sudo -u vm -H bash -l -c'
+$home         = '/home/vm'
 
 Exec {
   path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin']
@@ -146,7 +146,7 @@ package { 'redis-server':
 #   ensure => installed
 # }
 # exec { 'download_elasticsearch':
-#   command => "${as_vagrant} 'wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.deb'",
+#   command => "${as_vm} 'wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.deb'",
 #   creates => "${home}/elasticsearch-0.90.7.deb",# Only download if not exist
 #   require => Package['openjdk-7-jre-headless']
 # }
@@ -159,7 +159,7 @@ package { 'redis-server':
 # --- Ruby ---------------------------------------------------------------------
 
 exec { 'install_rvm':
-  command => "${as_vagrant} 'curl -L https://get.rvm.io | bash -s stable'",
+  command => "${as_vm} 'curl -L https://get.rvm.io | bash -s stable'",
   creates => "${home}/.rvm/bin/rvm",
   require => Package['curl']
 }
@@ -170,19 +170,19 @@ exec { 'install_ruby':
   # The rvm executable is more suitable for automated installs.
   #
   # Thanks to @mpapis for this tip.
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 1.9.3 --latest-binary --autolibs=enabled && rvm --fuzzy alias create default 1.9.3'",
+  command => "${as_vm} '${home}/.rvm/bin/rvm install 1.9.3 --latest-binary --autolibs=enabled && rvm --fuzzy alias create default 1.9.3'",
   creates => "${home}/.rvm/bin/ruby",
   require => Exec['install_rvm']
 }
 
 # exec { 'install_bundler':
-#   command => "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'",
+#   command => "${as_vm} 'gem install bundler --no-rdoc --no-ri'",
 #   # creates => "${home}/.rvm/bin/bundle",
 #   require => Exec['install_ruby']
 # }
 
 exec { 'install_rails':
-  command => "${as_vagrant} 'gem install rails -v 3.2.11'",
+  command => "${as_vm} 'gem install rails -v 3.2.11'",
   require => Exec['install_ruby']
 }
 
