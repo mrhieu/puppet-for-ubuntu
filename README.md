@@ -42,8 +42,16 @@ $ sudo apt-get install puppet-common #standalone mode, no need master puppet to 
 ```
 After installation finish we will find directory /etc/puppet/. Copy manifests and modules of vagrant from https://github.com/mrhieu/puppet-for-ubuntu into that directory.
 
+```
+$ cd \
+$ git clone https://github.com/mrhieu/puppet-for-ubuntu.git
+$ sudo cp puppet-for-ubuntu/manifests /etc/puppet/ -r
+$ sudo cp puppet-for-ubuntu/modules /etc/puppet/ -r
+```
+
 Run puppet:
 ```
+$ cd /etc/puppet
 $ sudo puppet apply manifests/default.pp
 ```
 Drink coffee en enjoy your working environment :)
