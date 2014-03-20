@@ -54,6 +54,18 @@ Run puppet:
 $ cd /etc/puppet
 $ sudo puppet apply manifests/default.pp
 ```
-Drink coffee en enjoy your working environment :)
+Drink coffee and enjoy your new working environment :)
+
+## Note
+For some reason, I can not use specifics version of ruby (1.9.3) and rails (3.2.16) after running puppet. You can try to mannually install them:
+
+```
+$ curl -L get.rvm.io | bash -s -- --auto-dotfiles
+$ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
+$ source ~/.rvm/scripts/rvm
+$ rvm install 1.9.3
+$ rvm use 1.9.3 --default
+$ gem install rails -v 3.2.16
+```
 
 Ref: https://help.ubuntu.com/12.04/serverguide/puppet.html
