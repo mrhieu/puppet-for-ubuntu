@@ -33,7 +33,7 @@
 Firstly:
 ```
 $ sudo apt-get update
-$ sudo apt-get install git vim
+$ sudo apt-get install git vim -y
 ```
 
 Install puppet client:
