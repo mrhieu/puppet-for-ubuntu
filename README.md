@@ -42,7 +42,7 @@ Install puppet client:
 $ wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
 $ sudo dpkg -i puppetlabs-release-precise.deb
 $ sudo apt-get update
-$ sudo apt-get install puppet-common #standalone mode, no need master puppet to run
+$ sudo apt-get install puppet-common -y #standalone mode, no need master puppet to run
 $ puppet module install maestrodev/rvm # puppet module to install RVM
 ```
 After installation finish we will find directory /etc/puppet/. Copy manifests and modules of vagrant from https://github.com/mrhieu/puppet-for-ubuntu into that directory.
